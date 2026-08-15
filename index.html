@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chavez Portfolio</title>
+<meta name="description" content="Developer portfolio and project archive.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+
+    <nav class="nav__links">
+
+      <!-- DROP BAR: click toggles the project tray below the nav -->
+      <button class="nav__drop-btn" id="dropBtn" aria-expanded="false" aria-controls="projectTray">
+        projects
+        <span class="nav__caret" aria-hidden="true">▾</span>
+      </button>
+
+      <a href="#skills">skills</a>
+    </nav>
+  </div>
+
+  <!-- ============ PROJECT DROP TRAY ============ -->
+  <div class="tray" id="projectTray" aria-hidden="true">
+    <div class="tray__inner">
+
+      <div class="tray__head">
+        <span class="tray__path">Projects</span>
+        <span class="tray__count" id="trayCount">0 stored</span>
+      </div>
+
+      <!--
+        HOW TO ADD A PROJECT
+        =====================
+        Copy one <article class="tray__item"> block and edit the fields.
+        Nothing else in the file needs to change — the counter above
+        updates itself automatically in script.js.
+      -->
+      <div class="tray__grid" id="trayGrid">
+
+        <article class="tray__item">
+          <div class="tray__item-top">
+            <span class="tray__folder">📁</span>
+            <h3 class="tray__title">project-one puhon</h3>
+          </div>
+          <p class="tray__desc">
+            wala pay projects
+          </p>
+          <ul class="tray__tags">
+            <li>JavaScript wla pa</li>
+            <li>CSS alaws pa</li>
+            <li>API basin</li>
+          </ul>
+          <div class="tray__links">
+            <a href="#" target="_blank" rel="noopener">code → alaws</a>
+            <a href="#" target="_blank" rel="noopener">demo → alaws</a>
+          </div>
+        </article>
+        
+        </article>
+            <!-- if i want to add projects -->
+        <article class="tray__item tray__item--placeholder" id="addProjectCard">
+          <div class="tray__plus">+</div>
+          <p>Duplicate the <code>&lt;article class="tray__item"&gt;</code> block in index.html to store another project here.</p>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    
+    <div class="hero__content">
+      
+      <h1 class="hero__title">Nathaniel Chavez</h1>
+      <p class="hero__subtitle">Software developer building things that ship, break, and get fixed.</p>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="about">
+    
+    <div class="about__grid">
+      
+      <div class="about__text">
+        <p>
+          I'm a CS college student who's learning to be a developer with a focus on web development. 
+          I enjoy building things that are useful, fun, and sometimes a little bit weird.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section id="skills" class="skills">
+    <div class="skills__grid">
+      <div class="skills__col">
+        <h4>Languages</h4>
+        <ul>
+          <li>JavaScript</li>
+          <li>HTML / CSS</li>
+        </ul>
+      </div>
+      <div class="skills__col">
+        <h4>Tools</h4>
+        <ul>
+          <li>VS Code</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="script.js">
+    
+</script>
+</body>
+</html>
