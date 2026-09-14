@@ -129,18 +129,16 @@ ul {
   transform: rotate(180deg);
 }
 
-/* the drop bar tray itself */
-.tray {
-  max-height: 0;
-  overflow: hidden;
-  border-bottom: 0 solid var(--line);
-  transition: max-height 0.35s ease, border-color 0.35s ease;
+/* the drop bar itself — required pattern:
+   hidden by default, JS toggles the "show" class */
+.dropdown-menu {
+  display: none;
   background: var(--bg-raised);
+  border-bottom: 1px solid var(--line);
 }
 
-.tray.tray--open {
-  max-height: 900px;
-  border-bottom: 1px solid var(--line);
+.dropdown-menu.show {
+  display: block;
 }
 
 .tray__inner {
@@ -297,66 +295,26 @@ ul {
   margin: 0 auto;
   padding: 5rem 1.5rem 6rem;
   display: flex;
-  gap: 1.5rem;
+  align-items: center;
+  gap: 2rem;
 }
 
-.hero__gutter {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--line);
-  padding-top: 0.3rem;
+.hero__avatar {
+  flex-shrink: 0;
+}
+
+.hero__avatar-img {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent-dim);
+  box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--line);
 }
 
 .hero__content {
   flex: 1;
   min-width: 0;
-}
-
-.hero__prompt {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  color: var(--text-dim);
-  margin-bottom: 1.5rem;
-}
-
-.hero__user {
-  color: var(--accent);
-}
-
-.hero__host {
-  color: var(--warn);
-}
-
-.hero__at,
-.hero__colon {
-  color: var(--text-dim);
-}
-
-.hero__tilde {
-  color: var(--accent);
-}
-
-.hero__dollar {
-  color: var(--text-dim);
-  margin-right: 0.5rem;
-}
-
-.hero__typed {
-  color: var(--text);
-}
-
-.hero__cursor {
-  color: var(--accent);
-  animation: blink 1s step-end infinite;
-}
-
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
 }
 
 .hero__title {
@@ -366,6 +324,12 @@ ul {
   line-height: 1.05;
   margin-bottom: 1rem;
   letter-spacing: -0.02em;
+}
+
+.hero__subtitle {
+  font-size: 1.05rem;
+  color: var(--text-dim);
+  max-width: 36ch;
 }
 
 .btn {
@@ -420,6 +384,17 @@ main>section {
 }
 
 /* ============================================================
+   ABOUT
+   ============================================================ */
+.about__text {
+  max-width: 60ch;
+}
+
+.about__text p {
+  color: var(--text-dim);
+}
+
+/* ============================================================
    SKILLS
    ============================================================ */
 .skills__grid {
@@ -443,8 +418,6 @@ main>section {
   border-bottom: 1px solid var(--line);
 }
 
-
-
 /* ============================================================
    RESPONSIVE
    ============================================================ */
@@ -459,14 +432,13 @@ main>section {
 
   .hero {
     padding: 3.5rem 1.25rem 4rem;
+    flex-direction: column;
+    text-align: center;
   }
 
-  .hero__gutter {
-    display: none;
-  }
-
-  .about__lines {
-    display: none;
+  .hero__avatar-img {
+    width: 96px;
+    height: 96px;
   }
 }
 

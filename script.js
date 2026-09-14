@@ -1,48 +1,55 @@
 // ============================================================
-// DROP BAR (projects tray) toggle
+// DROP BAR (projects dropdown) — vanilla JS only
+//
+// Required concepts demonstrated:
+//   - DOM selection: getElementById()
+//   - Event handling: addEventListener()
+//   - classList.toggle() to show/hide the menu
 // ============================================================
-const dropBtn   = document.getElementById('dropBtn');
-const tray      = document.getElementById('projectTray');
-const heroBtn   = document.getElementById('heroProjectsBtn');
 
-function openTray(){
-  tray.classList.add('tray--open');
-  tray.setAttribute('aria-hidden', 'false');
-  dropBtn.setAttribute('aria-expanded', 'true');
-}
+// 1. Select the dropdown button and dropdown menu
+const dropdownButton = document.getElementById('dropdownBtn');
+const dropdownMenu    = document.getElementById('dropdownMenu');
+const dropdownCaret   = document.getElementById('dropdownCaret');
 
-function closeTray(){
-  tray.classList.remove('tray--open');
-  tray.setAttribute('aria-hidden', 'true');
-  dropBtn.setAttribute('aria-expanded', 'false');
-}
+// 2. Click the button -> toggle the "show" class on the menu
+dropdownButton.addEventListener('click', function (e) {
+  e.stopPropagation(); // don't let this click immediately trigger the outside-click handler below
+  dropdownMenu.classList.toggle('show');
 
-function toggleTray(){
-  const isOpen = tray.classList.contains('tray--open');
-  isOpen ? closeTray() : openTray();
-}
+  const isOpen = dropdownMenu.classList.contains('show');
 
-dropBtn.addEventListener('click', toggleTray);
+  // keep accessibility attributes in sync
+  dropdownButton.setAttribute('aria-expanded', isOpen);
+  dropdownMenu.setAttribute('aria-hidden', !isOpen);
 
-// "See projects" button in the hero opens the tray and scrolls to it
-heroBtn.addEventListener('click', () => {
-  openTray();
-  document.querySelector('.nav').scrollIntoView({ behavior: 'smooth' });
-});
-
-// close tray on outside click
-document.addEventListener('click', (e) => {
-  const clickedInsideTray = tray.contains(e.target);
-  const clickedDropBtn = dropBtn.contains(e.target);
-  const clickedHeroBtn = heroBtn.contains(e.target);
-  if (!clickedInsideTray && !clickedDropBtn && !clickedHeroBtn){
-    closeTray();
+  // Bonus — flip the arrow indicator ▾ / ▴
+  if (dropdownCaret) {
+    dropdownCaret.textContent = isOpen ? '▴' : '▾';
   }
 });
 
-// close tray on Escape
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') closeTray();
+// Bonus — close the dropdown when clicking anywhere outside it
+document.addEventListener('click', function (e) {
+  const clickedInsideMenu = dropdownMenu.contains(e.target);
+  const clickedButton = dropdownButton.contains(e.target);
+
+  if (!clickedInsideMenu && !clickedButton) {
+    dropdownMenu.classList.remove('show');
+    dropdownButton.setAttribute('aria-expanded', 'false');
+    dropdownMenu.setAttribute('aria-hidden', 'true');
+    if (dropdownCaret) dropdownCaret.textContent = '▾';
+  }
+});
+
+// Close on Escape key too
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') {
+    dropdownMenu.classList.remove('show');
+    dropdownButton.setAttribute('aria-expanded', 'false');
+    dropdownMenu.setAttribute('aria-hidden', 'true');
+    if (dropdownCaret) dropdownCaret.textContent = '▾';
+  }
 });
 
 // ============================================================
@@ -53,50 +60,9 @@ document.addEventListener('keydown', (e) => {
 const trayGrid  = document.getElementById('trayGrid');
 const trayCount = document.getElementById('trayCount');
 
-function updateProjectCount(){
+function updateProjectCount() {
   const items = trayGrid.querySelectorAll('.tray__item:not(.tray__item--placeholder)');
-  const n = items.length;
-  trayCount.textContent = `${n} stored`;
+  trayCount.textContent = `${items.length} stored`;
 }
 
 updateProjectCount();
-
-// ============================================================
-// Hero terminal-style typed line
-// ============================================================
-const typedEl = document.getElementById('typedLine');
-const phrases = ['whoami', 'cat about.md', 'ls projects/'];
-let phraseIndex = 0;
-let charIndex = 0;
-let deleting = false;
-
-function typeLoop(){
-  const current = phrases[phraseIndex];
-
-  if (!deleting){
-    typedEl.textContent = current.slice(0, charIndex + 1);
-    charIndex++;
-    if (charIndex === current.length){
-      deleting = true;
-      setTimeout(typeLoop, 1400);
-      return;
-    }
-  } else {
-    typedEl.textContent = current.slice(0, charIndex - 1);
-    charIndex--;
-    if (charIndex === 0){
-      deleting = false;
-      phraseIndex = (phraseIndex + 1) % phrases.length;
-    }
-  }
-
-  setTimeout(typeLoop, deleting ? 45 : 90);
-}
-
-// respect reduced-motion preference
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-if (prefersReducedMotion){
-  typedEl.textContent = phrases[0];
-} else {
-  typeLoop();
-}

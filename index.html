@@ -20,10 +20,10 @@
 
     <nav class="nav__links">
 
-      <!-- DROP BAR: click toggles the project tray below the nav -->
-      <button class="nav__drop-btn" id="dropBtn" aria-expanded="false" aria-controls="projectTray">
+      <!-- DROP BAR: click toggles the project menu below the nav -->
+      <button class="nav__drop-btn" id="dropdownBtn" aria-expanded="false" aria-controls="dropdownMenu">
         projects
-        <span class="nav__caret" aria-hidden="true">▾</span>
+        <span class="nav__caret" id="dropdownCaret" aria-hidden="true">▾</span>
       </button>
 
       <a href="#skills">skills</a>
@@ -31,7 +31,7 @@
   </div>
 
   <!-- ============ PROJECT DROP TRAY ============ -->
-  <div class="tray" id="projectTray" aria-hidden="true">
+  <div class="tray dropdown-menu" id="dropdownMenu" aria-hidden="true">
     <div class="tray__inner">
 
       <div class="tray__head">
@@ -51,24 +51,62 @@
         <article class="tray__item">
           <div class="tray__item-top">
             <span class="tray__folder">📁</span>
-            <h3 class="tray__title">project-one puhon</h3>
+            <h3 class="tray__title">Graphic Design</h3>
           </div>
           <p class="tray__desc">
-            wala pay projects
+            project
           </p>
           <ul class="tray__tags">
-            <li>JavaScript wla pa</li>
-            <li>CSS alaws pa</li>
-            <li>API basin</li>
+            <li></li>
+            <li></li>
+            <li></li>
           </ul>
           <div class="tray__links">
-            <a href="#" target="_blank" rel="noopener">code → alaws</a>
-            <a href="#" target="_blank" rel="noopener">demo → alaws</a>
+            <a href="#" target="_blank" rel="noopener">code →</a>
+            <a href="#" target="_blank" rel="noopener">demo →</a>
           </div>
         </article>
-        
-        <!-- </article>
-             if i want to add projects 
+
+        <article class="tray__item">
+          <div class="tray__item-top">
+            <span class="tray__folder">📁</span>
+            <h3 class="tray__title">Web Development</h3>
+          </div>
+          <p class="tray__desc">
+            project
+          </p>
+          <ul class="tray__tags">
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+          <div class="tray__links">
+            <a href="#" target="_blank" rel="noopener">code →</a>
+            <a href="#" target="_blank" rel="noopener">demo →</a>
+          </div>
+        </article>
+
+        <article class="tray__item">
+          <div class="tray__item-top">
+            <span class="tray__folder">📁</span>
+            <h3 class="tray__title">Mobile App Development</h3>
+          </div>
+          <p class="tray__desc">
+            project
+          </p>
+          <ul class="tray__tags">
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+          <div class="tray__links">
+            <a href="#" target="_blank" rel="noopener">code →</a>
+            <a href="#" target="_blank" rel="noopener">demo →</a>
+          </div>
+        </article>
+
+        <!--
+        if i want to add projects
         <article class="tray__item tray__item--placeholder" id="addProjectCard">
           <div class="tray__plus">+</div>
           <p>Duplicate the <code>&lt;article class="tray__item"&gt;</code> block in index.html to store another project here.</p>
@@ -83,9 +121,13 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero">
-    
+
+    <div class="hero__avatar">
+      <img src="profile.jpg" alt="Nathaniel Chavez" class="hero__avatar-img">
+    </div>
+
     <div class="hero__content">
-      
+
       <h1 class="hero__title">Nathaniel Chavez</h1>
       <p class="hero__subtitle">Software developer building things that ship, break, and get fixed.</p>
     </div>
@@ -93,12 +135,12 @@
 
   <!-- ============ ABOUT ============ -->
   <section id="about" class="about">
-    
+
     <div class="about__grid">
-      
+
       <div class="about__text">
         <p>
-          I'm a CS college student who's learning to be a developer with a focus on web development. 
+          I'm a CS college student who's learning to be a developer with a focus on web development.
           I enjoy building things that are useful, fun, and sometimes a little bit weird.
         </p>
       </div>
@@ -125,8 +167,6 @@
   </section>
 </main>
 
-<script src="script.js">
-    
-</script>
+<script src="script.js"></script>
 </body>
 </html>
