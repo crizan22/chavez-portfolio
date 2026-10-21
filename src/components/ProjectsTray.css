@@ -1,0 +1,31 @@
+/* hidden by default, shown when the "show" class is present */
+.dropdown-menu {
+  display: none;
+  background: var(--bg-raised);
+  border-bottom: 1px solid var(--line);
+}
+
+.dropdown-menu.show { display: block; }
+
+.tray__inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.tray__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 1.1rem;
+  font-family: var(--font-mono);
+}
+
+.tray__path { color: var(--accent); font-size: 0.85rem; }
+.tray__count { color: var(--text-dim); font-size: 0.75rem; }
+
+.tray__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
