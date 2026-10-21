@@ -1,6 +1,5 @@
 import './ProjectCard.css';
 
-// Reusable card: give it a project object, it renders it.
 function ProjectCard({ project }) {
   const { title, description, tags = [], codeUrl, demoUrl } = project;
 

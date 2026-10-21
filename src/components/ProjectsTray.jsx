@@ -2,7 +2,6 @@ import ProjectCard from './ProjectCard';
 import projects from '../data/projects';
 import './ProjectsTray.css';
 
-// The dropdown panel. "show" class is added when isOpen is true.
 function ProjectsTray({ isOpen }) {
   return (
     <div

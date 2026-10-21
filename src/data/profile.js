@@ -1,4 +1,3 @@
-// Personal info lives here so components stay reusable.
 const profile = {
   name: 'Nathaniel Chavez',
   tagline: 'Software developer building things that ship, break, and get fixed.',

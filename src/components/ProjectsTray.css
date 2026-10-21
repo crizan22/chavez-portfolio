@@ -1,4 +1,4 @@
-/* hidden by default, shown when the "show" class is present */
+
 .dropdown-menu {
   display: none;
   background: var(--bg-raised);
