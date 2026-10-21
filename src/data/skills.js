@@ -1,5 +1,5 @@
 const skills = [
-  { title: 'Languages', items: ['JavaScript', 'HTML / CSS'] },
+  { title: 'Languages', items: ['JavaScript', 'HTML / CSS', 'React'] },
   { title: 'Tools', items: ['VS Code'] },
 ];
 
